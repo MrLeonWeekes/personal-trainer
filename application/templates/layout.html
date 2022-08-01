@@ -1,0 +1,17 @@
+<html>
+
+<head>
+    <title>ToDo App</title>
+</head>
+
+<body style="background-color:rgb(251, 242, 181); font-family:calibri;">
+    <h1>PT App</h1>
+    <a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('add_user') }}">Add User</a> | <a
+        href="{{ url_for('view_all_users') }}">View User</a> | <a href="{{ url_for('create_new_task') }}">Create
+        Task</a> | <a href="{{ url_for('view_all_tasks') }}">View
+        Tasks</a>
+    {% block body %}
+    {% endblock body %}
+</body>
+
+</html>
