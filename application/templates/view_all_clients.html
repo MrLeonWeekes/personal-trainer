@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2>{{ entity }} List</h2>
+{% for client in tasks %}
+{{ client.__str__() }}
+{% if entity == 'Client' %}
+{{ client.user.__str__() }}<a href="{{ url_for('delete_client', id=cust.cust_id) }}">delete</a><br>
+{% endif %}
+<br>
+{% endfor %}
+{% endblock body %}

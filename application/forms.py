@@ -11,15 +11,25 @@ class checkDateInFuture():
         if field.data < date.today():
             raise ValidationError(self.message)
 
-class UserForm(FlaskForm):
+        # ----------------------- 
+
+class ClientForm(FlaskForm):
     forename = StringField('Forename', validators=[DataRequired(), Length(min=1, max=30)])
     surname = StringField('Surname', validators=[DataRequired(), Length(min=1, max=30)])
+    dob = DateField('Date Of Birth', validators=[DataRequired(), checkDateInFuture("Please choose a date in the future")])
+    address = StringField('Address', validators=[DataRequired(), Length(min=1, max=50)])
+    email = StringField('Email', validators=[DataRequired(), Length(min=1, max=50)])
+    fitness_level = StringField('Fitness Level (1 to 10)', validators=[DataRequired(), Length(min=1, max=2)])
     submit = SubmitField('Enter')
 
-class TaskForm(FlaskForm):
-    task_name = StringField('Task Name', validators=[DataRequired(), Length(min=1, max=20)])
-    task_desc = TextAreaField('Description', validators=[DataRequired(), Length(min=1, max=100)])
-    task_status = SelectField('Status', choices=[('todo', 'todo'), ('done', 'done')])
-    due_date = DateField('Due Date', validators=[DataRequired(), checkDateInFuture("Please choose a date in the future")])
-    assigned_to = SelectField('Assign To', choices=[])
+class TrainerForm(FlaskForm):
+    forename = StringField('Forename', validators=[DataRequired(), Length(min=1, max=30)])
+    surname = StringField('Surname', validators=[DataRequired(), Length(min=1, max=30)])
+    skill = StringField('Skill', validators=[DataRequired(), Length(min=1, max=50)])
+    price = StringField('Price', validators=[DataRequired(), Length(min=1, max=10)])
     submit = SubmitField('Enter')
+
+class WorkoutForm(FlaskForm):
+    workout_date = DateField('Select a date to workout', validators=[DataRequired(), checkDateInFuture("Please choose a date in the future")])
+
+        # ----------------------- 

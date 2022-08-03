@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2>{{ entity }} List</h2>
+{% for trainer in tasks %}
+{{ trainer.__str__() }}
+{% if entity == 'Trainer' %}
+{{ trainer.user.__str__() }}
+{% endif %}
+<br>
+{% endfor %}
+{% endblock body %}
