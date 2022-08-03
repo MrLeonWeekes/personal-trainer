@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2>{{ entity }} List</h2>
+{% for workouts in tasks %}
+{{ workouts.__str__() }}
+{% if entity == 'Workout' %}
+{{ workouts.user.__str__() }}
+{% endif %}
+<br>
+{% endfor %}
+{% endblock body %}

@@ -29,4 +29,7 @@ class TrainerForm(FlaskForm):
     submit = SubmitField('Enter')
 
 class WorkoutForm(FlaskForm):
+    client_id = StringField('Client Name')
     workout_date = DateField('Select a date to workout', validators=[DataRequired(), checkDateInFuture("Please choose a date in the future")])
+    assigned_to = SelectField('Assign To', choices=[])
+    submit = SubmitField('Enter')

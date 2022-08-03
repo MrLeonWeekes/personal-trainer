@@ -44,8 +44,6 @@ def view_all_clients():
 def update_client(id):
     client_to_update = Client.query.get(id)
     form = ClientForm()
-    # users = Client.query.all()
-    # form.assigned_to.choices = [(user.client_id, f"{user.forename} {user.surname}") for user in users]
     if form.validate_on_submit():
         client_to_update.forename = form.forename.data
         client_to_update.surname = form.surname.data
@@ -82,7 +80,30 @@ def view_all_trainers():
     trainers = Trainer.query.all()
     return render_template('view_all_trainers.html', entity='Trainer', tasks=trainers)
 
-# @app.route('/workout', methods=['GET', 'POST'])
-# def book_workout():
-#     form = WorkoutForm()
-#     if form.validate_on_submit():
+@app.route('/view-workout')
+def view_workouts():
+    workouts = Workout.query.all()
+    return render_template('view_workouts.html', entity='Workout', tasks=workouts)
+
+@app.route('/book-workout', methods=['GET', 'POST'])
+def book_workout():
+    form = WorkoutForm()
+    users = Trainer.query.all()
+    form.assigned_to.choices = [(user.assigned_to, f"{user.forename}{user.surname}") for user in users]
+    if form.validate_on_submit():
+        w_name = form.client_id.data
+        w_date = form.workout_date.data
+        w_trainer = form.assigned_to.data
+        new_workout = Workout(client_id=w_name, workout_date=w_date, assigned_to=w_trainer)
+        db.session.add(new_workout)
+        db.session.commit()
+        return redirect(url_for('view_workouts.html'))
+    return render_template('book_workout.html', form = form)
+
+
+
+
+
+
+
+
