@@ -1,10 +1,14 @@
 {% extends 'layout.html' %}
 {% block body %}
 <h2>{{ entity }} List</h2>
-{% for client in tasks %}
-{{ client.__str__() }}
+<p> -----------------------------------------------------------------------------------------------------</p>
+{% for cust in tasks %}
+{{ cust.__str__() }}
 {% if entity == 'Client' %}
-{{ client.user.__str__() }}<a href="{{ url_for('delete_client', id=cust.cust_id) }}">delete</a><br>
+{{ cust.client.__str__() }}<br>
+<a href="{{ url_for('update_client', id=cust.client_id) }}">Update Client</a><br>
+<a href="{{ url_for('delete_client', id=cust.client_id) }}">Delete Client</a><br>
+<p> -----------------------------------------------------------------------------------------------------</p>
 {% endif %}
 <br>
 {% endfor %}
