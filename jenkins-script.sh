@@ -23,3 +23,5 @@ echo "python3 -m gunicorn -D --bind 0.0.0.0:5000 --workers 4 app:app" >> deploy-
 
 ssh jenkins@prod-server < deploy-steps
 
+# se
+
