@@ -1,6 +1,6 @@
 PERSONAL TRAINER APP
 
-This is a simple Personal Trainer app using the Python web framework Flask. The app contains links in the navbar that allows you add personal trainers and clients to the app which will store the information in your mySql database. Clients can be updated and deleted.
+This is a simple Personal Trainer app using the Python web framework Flask. The app contains links in the navbar that allows you add personal trainers and clients to the app which will store the information in your mySql database. You can view various lists of data and clients can be updated and deleted.
 
 -------------- PIC OF HOME PAGE
 
