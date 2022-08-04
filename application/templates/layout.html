@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>ToDo App</title>
+    <title>PT App</title>
 </head>
 
 <body style="background-color:rgb(251, 242, 181); font-family:calibri;">
@@ -9,11 +9,9 @@
     <a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('add_trainer') }}">Add Trainer</a> | <a
         href="{{ url_for('view_all_trainers') }}">View Trainers</a> | <a href="{{ url_for('add_client') }}">Add
         Client</a> | <a href="{{ url_for('view_all_clients') }}">View
-        Clients</a>
-
-    <!-- | <a href="{{ url_for('view_workouts') }}">View
-            Workout</a> | <a href="{{ url_for('book_workout') }}">Book
-            Workout</a> -->
+        Clients</a> | <a href="{{ url_for('view_workouts') }}">View
+        Workout</a> | <a href="{{ url_for('book_workout') }}">Book
+        Workout</a>
     {% block body %}
     {% endblock body %}
 </body>

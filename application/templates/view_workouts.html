@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 {% block body %}
 <h2>{{ entity }} List</h2>
+<p>See all workouts here</p>
 {% for workouts in tasks %}
 {{ workouts.__str__() }}
 {% if entity == 'Workout' %}

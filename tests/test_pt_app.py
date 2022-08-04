@@ -71,30 +71,31 @@ class TestHomePage(TestBase):
         self.assert200(test_response)
         self.assertIn(b'Sample Forename', test_response.data)
     
-# TEST FAILED
+# TEST PASSED
 
-    # def test_view_workouts(self):
-    #     test_response = self.client.get(url_for('view_workouts'))
-    #     self.assert200(test_response)
-    #     self.assertIn(b'client_id', test_response.data)
+    def test_view_workouts(self):
+        test_response = self.client.get(url_for('view_workouts'))
+        self.assert200(test_response)
+        self.assertIn(b'List', test_response.data)
 
 
-# TEST FAILED
+# TEST FAILED ........................
 
     # def test_view_workouts(self):
     #     test_response = self.client.get(url_for('view_workouts'))
     #     self.assert200(test_response)
     #     self.assertIn(b'workout_date', test_response.data)
 
+# TEST PASSED
 
-    # def test_book_workout(self):
-    #     test_response = self.client.get(url_for('book_workout'))
-    #     self.assert200(test_response)
-    #     self.assertIn(b'workout_date', test_response.data)
+    def test_book_workout(self):
+        test_response = self.client.get(url_for('book_workout'))
+        self.assert200(test_response)
+        self.assertIn(b'workout_date', test_response.data)
     
 
 
-
+# POST REQUESTS ....................................... 
  
 # TEST PASSED
 
@@ -117,6 +118,8 @@ class TestPostRequests(TestBase):
         self.assert200(response)
         self.assertIn(b'New forename', response.data)
 
+# TEST PASSED
+
     def test_post_add_trainer(self):
         response = self.client.post(
             url_for('add_trainer'),
@@ -134,16 +137,71 @@ class TestPostRequests(TestBase):
 
 # TEST PASSED
 
-    def test_post_book_workout(self):
+    def test_update_client(self):
         response = self.client.post(
-            url_for('book_workout'),
+            url_for('update_client', id=1),
             data = dict(
-                w_name = 'Workout name', 
-                w_date ='Workout date', 
-                w_trainer = "Workout trainer"
+                forename = 'New forename', 
+                surname ='New surname', 
+                age = 55, 
+                address = 'New address',
+                email = 'New email',
+                fitness_level = 8
                 ),
             follow_redirects = True
         )
 
         self.assert200(response)
-        self.assertIn(b'PT App', response.data)
+        self.assertIn(b'New surname', response.data)   
+
+# TEST .......... 
+
+    # def test_update_client(self):
+    #         response = self.client.post(
+    #             url_for('update_client', id=1),
+    #             data = dict(
+    #                 forename = 'New forename', 
+    #                 surname ='New surname', 
+    #                 age = 55, 
+    #                 address = 'New address',
+    #                 email = 'New email',
+    #                 fitness_level = 8
+    #                 ),
+    #             follow_redirects = True
+    #         )
+
+    #         self.assert200(response)
+    #         self.assertIn(b'Client Form', response.data)                     
+
+# TEST PASSED
+
+    def test_post_book_workout(self):
+        response = self.client.post(
+            url_for('book_workout'),
+            data = dict(
+                w_name = 1,
+                w_date = (2022 - 7 - 7),
+                w_trainer = 1
+                ),
+            follow_redirects = True
+        )
+
+        self.assert200(response)
+        # self.assertIn(b'here', response.data)
+        assert Workout.query.filter_by(workout_id=1).first() is None
+
+# TEST FAILED .........
+
+    def test_post_book_workout(self):
+        response = self.client.post(
+            url_for('book_workout'),
+            data = dict(
+                w_name = 1,
+                w_client = 1
+                ),
+            follow_redirects = True
+        )
+
+        self.assert200(response)
+        self.assertIn(b'', response.data)
+        # assert Workout.query.filter_by(workout_id = 1).first() is None

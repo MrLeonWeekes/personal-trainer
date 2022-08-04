@@ -91,10 +91,12 @@ def book_workout():
     users = Trainer.query.all()
     form.assigned_to.choices = [(user.assigned_to, f"{user.forename}{user.surname}") for user in users]
     if form.validate_on_submit():
-        w_name = form.client_id.data
-        w_date = form.workout_date.data
+        w_name = form.workout_id.data
+        w_client = form.client_id.data
         w_trainer = form.assigned_to.data
-        new_workout = Workout(client_id=w_name, workout_date=w_date, assigned_to=w_trainer)
+        w_date = form.workout_date.data
+        
+        new_workout = Workout(workout_id=w_name, client_id=w_client, assigned_to=w_trainer, workout_date=w_date)
         db.session.add(new_workout)
         db.session.commit()
         return redirect(url_for('view_workouts.html'))

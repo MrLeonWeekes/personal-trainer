@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 {% block body %}
 <div class="Form">
+    <h1>Client Form</h1>
     <form method="POST" action="">
         {{ form.hidden_tag() }} <br>
         {{ form.forename.label }} {{ form.forename }} <br>

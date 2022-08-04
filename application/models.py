@@ -26,10 +26,9 @@ class Client(db.Model):
 
 class Workout(db.Model):
     workout_id = db.Column(db.Integer, primary_key = True)
-    workout_date = db.Column(db.Date, nullable=False)
     client_id = db.Column(db.Integer, db.ForeignKey('client.client_id'))
-    assigned_to = db.Column(db.Integer, db.ForeignKey('trainer.trainer_id'))
-    
+    trainer_id = db.Column(db.Integer, db.ForeignKey('trainer.trainer_id'))
+    workout_date = db.Column(db.Date, nullable=False)
     def __str__(self):
         return f"Session booked for: {self.client.forename + ' ' + self.client.surname} on {self.workout_date} with the trainer {self.trainer.forename + ' ' + self.trainer.surname} costing £{self.trainer.price}0"
 
