@@ -35,7 +35,7 @@ You can use this app to add personal trainers and clients to a database
 
 TESTING
 
-The app has been 95% unit tested using PyTest & TestCase. This will ensure the app run
+The app has been 88% unit tested using PyTest & TestCase. This will ensure the app run
 
 ![Test Coverage](https://user-images.githubusercontent.com/48031756/183021493-2c6db148-457b-422f-a7ef-0d79df8f8684.png)
 
