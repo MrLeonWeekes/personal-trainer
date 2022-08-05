@@ -4,15 +4,24 @@
     <title>PT App</title>
 </head>
 
-<body style="background-color:rgb(251, 242, 181); font-family:calibri;">
+<body style="background-color:rgb(251, 242, 181); font-family:calibri; padding: 25px; text-align: center;">
     <h1>PT App</h1>
-    <a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('add_trainer') }}">Add Trainer</a> | <a
-        href="{{ url_for('view_all_trainers') }}">View Trainers</a> | <a href="{{ url_for('add_client') }}">Add
-        Client</a> | <a href="{{ url_for('view_all_clients') }}">View
-        Clients</a> | <a href="{{ url_for('view_workouts') }}">View
-        Workout</a> | <a href="{{ url_for('book_workout') }}">Book
-        Workout</a>
+    <div style="background-color:#fff; padding: 20px 0;  box-shadow: 3px 3px 3px #000;">
+        <a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('add_trainer') }}">Add Trainer</a> | <a
+            href="{{ url_for('view_all_trainers') }}">View Trainers</a> | <a href="{{ url_for('add_client') }}">Add
+            Client</a> | <a href="{{ url_for('view_all_clients') }}">View
+            Clients</a> | <a href="{{ url_for('view_workouts') }}">View
+            Workout</a>
+        <!-- | <a href="{{ url_for('book_workout') }}">Book -->
+        <!-- Workout</a> -->
+    </div>
     {% block body %}
+
+    <h3>This is a simple Personal Trainer app that allows you to Create, Read, Update & Delete all your personal
+        trainers and clients.</h3>
+
+
+
     {% endblock body %}
 </body>
 
